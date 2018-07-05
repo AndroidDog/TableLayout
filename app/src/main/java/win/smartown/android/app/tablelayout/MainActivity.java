@@ -8,22 +8,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import win.smartown.android.library.tableLayout.ScrollTableLayout;
 import win.smartown.android.library.tableLayout.TableAdapter;
-import win.smartown.android.library.tableLayout.TableLayout;
 
 public class MainActivity extends AppCompatActivity {
 
     private List<Content> contentList;
-    private TableLayout tableLayout;
+    private ScrollTableLayout scrollTableLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tableLayout = (TableLayout) findViewById(R.id.main_table);
+        scrollTableLayout = (ScrollTableLayout) findViewById(R.id.main_table);
         initContent();
-//        firstRowAsTitle();
-        firstColumnAsTitle();
+        firstRowAsTitle();
+//        firstColumnAsTitle();
     }
 
     private void initContent() {
@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         contentList.add(new Content("姓名", "语文", "数学", "英语", "物理", "化学", "生物"));
         contentList.add(new Content("张三", newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber()));
         contentList.add(new Content("李四", newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber()));
-        contentList.add(new Content("王二", newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber()));
+        contentList.add(new Content("王五", newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber()));
+        contentList.add(new Content("葛二蛋", newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber()));
         contentList.add(new Content("王尼玛", newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber()));
         contentList.add(new Content("张全蛋", newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber()));
         contentList.add(new Content("赵铁柱", newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber(), newRandomNumber()));
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private void firstRowAsTitle() {
         //fields是表格中要显示的数据对应到Content类中的成员变量名，其定义顺序要与表格中显示的相同
         final String[] fields = {"姓名", "语文", "数学", "英语", "物理", "化学", "生物"};
-        tableLayout.setAdapter(new TableAdapter() {
+        scrollTableLayout.setAdapter(new TableAdapter() {
             @Override
             public int getColumnCount() {
                 return fields.length;
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     //将第一列作为标题
     private void firstColumnAsTitle() {
-        tableLayout.setAdapter(new TableAdapter() {
+        scrollTableLayout.setAdapter(new TableAdapter() {
             @Override
             public int getColumnCount() {
                 return contentList.size();

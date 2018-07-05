@@ -13,10 +13,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
-/**
- * Created by Smartown on 2017/7/19.
- */
-public class TableLayout extends LinearLayout implements TableColumn.Callback {
+
+class TableLayout extends LinearLayout implements TableColumn.Callback {
 
     private int tableMode;
     private int tableRowHeight;
@@ -124,6 +122,8 @@ public class TableLayout extends LinearLayout implements TableColumn.Callback {
         int drawnWidth = 0;
         int maxRowCount = 0;
         int childCount = getChildCount();
+
+        // 画每一列的左侧分割线
         for (int i = 0; i < childCount; i++) {
             TableColumn column = (TableColumn) getChildAt(i);
             maxRowCount = Math.max(maxRowCount, column.getChildCount());
@@ -136,6 +136,7 @@ public class TableLayout extends LinearLayout implements TableColumn.Callback {
             }
             drawnWidth += column.getWidth();
         }
+        // 画每一行的下方分割线
         for (int i = 1; i < maxRowCount; i++) {
             float y = i * tableRowHeight;
             if (tableDividerSize > 1) {
@@ -144,6 +145,7 @@ public class TableLayout extends LinearLayout implements TableColumn.Callback {
                 canvas.drawRect(0, y - tableDividerSize, getWidth(), y, paint);
             }
         }
+        // 画表格外围的框线
         canvas.drawRect(0, 0, tableDividerSize, getHeight(), paint);
         canvas.drawRect(getWidth() - tableDividerSize, 0, getWidth(), getHeight(), paint);
         canvas.drawRect(0, 0, getWidth(), tableDividerSize, paint);

@@ -11,10 +11,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by Smartown on 2017/7/19.
- */
-public class TableColumn extends LinearLayout {
+
+class TableColumn extends LinearLayout {
 
     private String[] content;
     private Callback callback;
@@ -25,12 +23,6 @@ public class TableColumn extends LinearLayout {
         this.content = content;
         this.callback = callback;
         init();
-    }
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension((int) (callback.getTableLayout().getTableColumnPadding() * 2 + maxTextViewWidth), callback.getTableLayout().getTableRowHeight() * getChildCount());
     }
 
     private void init() {
@@ -71,6 +63,12 @@ public class TableColumn extends LinearLayout {
                 return Gravity.CENTER_VERTICAL | Gravity.RIGHT;
         }
         return Gravity.CENTER;
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        setMeasuredDimension((int) (callback.getTableLayout().getTableColumnPadding() * 2 + maxTextViewWidth), callback.getTableLayout().getTableRowHeight() * getChildCount());
     }
 
     public void onClick(float y) {

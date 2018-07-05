@@ -4,10 +4,8 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.widget.TextView;
 
-/**
- * Created by Smartown on 2017/7/19.
- */
-public class Util {
+
+class Util {
 
     public static DisplayMetrics getDisplayMetrics(Resources resources) {
         return resources.getDisplayMetrics();
